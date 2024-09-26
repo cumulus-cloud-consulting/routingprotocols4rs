@@ -6,6 +6,6 @@ description = "BGP server implementation"
 license = "GPL-3"
 
 [dependencies]
-tokio =  { version = "1.39.3", features = ["full"] }
-anyhow = "1.0.86"
+tokio =  { version = "1.40.0", features = ["full"] }
+anyhow = "1.0.89"
 bgp-shared = { path = "../bgp-shared"}

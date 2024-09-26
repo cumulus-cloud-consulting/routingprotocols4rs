@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/bgpd-app/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bgpd/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bgp-shared/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/file-config/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/bgpd-app/target" />
     </content>

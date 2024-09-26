@@ -1,0 +1,13 @@
+[package]
+name = "file-config"
+version = "0.1.0"
+edition = "2021"
+description = "BGPD config file handling"
+license = "GPL-3"
+
+[dependencies]
+tokio = { version = "1.40.0", features = ["fs", "io-util", "macros", "test-util"] }
+serde = { version = "1.0.210", features = ["default", "derive"] }
+serde_yaml = "0.9.33"
+anyhow = "1.0.89"
+bgp-shared = { path = "../bgp-shared"}

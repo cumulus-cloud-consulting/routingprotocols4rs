@@ -6,9 +6,10 @@ description = "Standalone BGPD  executable"
 license = "GPL-3"
 
 [dependencies]
-tokio =  { version = "1.39.3", features = ["full"] }
-anyhow = "1.0.86"
-clap = {  version = "4.5.16", features = ["derive"] }
+tokio =  { version = "1.40.0", features = ["full"] }
+anyhow = "1.0.89"
+clap = {  version = "4.5.18", features = ["derive"] }
 duration-string = "0.4.0"
 tempdir = "0.3.7"
 bgpd = { path = "../bgpd"}
+file-config = { path = "../file-config"}

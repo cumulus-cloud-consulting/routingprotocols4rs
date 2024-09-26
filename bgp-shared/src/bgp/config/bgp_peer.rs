@@ -1,11 +1,11 @@
 use crate::bgp::types::as_number::AsNumber;
 
-use std::net::{IpAddr, SocketAddr};
 use crate::bgp::types::simple_types::ConnectionEstablishmentMode;
+use std::net::{IpAddr, SocketAddr};
 
 /// This trait models the configuration of a remote BGP peer
 pub trait BgpPeer<'a> {
-    fn peer_address(&'a self) -> &'a IpAddr;
+    fn peer_address(&'a self) -> &'a SocketAddr;
     fn local_address(&'a self) -> &'a SocketAddr;
 
     fn remote_as_number(&'a self) -> &'a AsNumber;
@@ -13,19 +13,22 @@ pub trait BgpPeer<'a> {
     fn local_as_number(&'a self) -> &'a AsNumber;
 
     fn connection_mode(&'a self) -> &'a ConnectionEstablishmentMode;
+    fn name(&'a self) -> &'a String;
 }
 
 /// Default implementation of BGP peer configuration model
+#[derive!(Eq, Print,Debug,Clone)]
 pub struct DefaultBgpPeer {
-    peer_address: IpAddr,
+    peer_address: SocketAddr,
     local_address: SocketAddr,
     remote_as_number: AsNumber,
     local_as_number: AsNumber,
     connection_mode: ConnectionEstablishmentMode,
+    name: String,
 }
 
 impl<'a> BgpPeer<'a> for DefaultBgpPeer {
-    fn peer_address(&'a self) -> &'a IpAddr {
+    fn peer_address(&'a self) -> &'a SocketAddr {
         &self.peer_address
     }
 
@@ -43,5 +46,23 @@ impl<'a> BgpPeer<'a> for DefaultBgpPeer {
 
     fn connection_mode(&'a self) -> &'a ConnectionEstablishmentMode {
         &self.connection_mode
+    }
+
+    fn name(&'a self) -> &'a String { &self.name }
+}
+
+impl DefaultBgpPeer {
+    pub fn new(peer_address: SocketAddr,
+               local_address: SocketAddr,
+               remote_as_number: AsNumber,
+               local_as_number: AsNumber,
+               connection_mode: ConnectionEstablishmentMode,
+               name: &str) -> DefaultBgpPeer {
+        DefaultBgpPeer { peer_address,
+            local_address,
+            remote_as_number,
+            local_as_number,
+            connection_mode,
+            name: String::from(&name) }
     }
 }
