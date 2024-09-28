@@ -1,7 +1,7 @@
 use crate::bgp::types::as_number::AsNumber;
 
 use crate::bgp::types::simple_types::ConnectionEstablishmentMode;
-use std::net::{IpAddr, SocketAddr};
+use std::net::SocketAddr;
 
 /// This trait models the configuration of a remote BGP peer
 pub trait BgpPeer<'a> {
@@ -17,7 +17,7 @@ pub trait BgpPeer<'a> {
 }
 
 /// Default implementation of BGP peer configuration model
-#[derive!(Eq, Print,Debug,Clone)]
+#[derive(Debug,Clone)]
 pub struct DefaultBgpPeer {
     peer_address: SocketAddr,
     local_address: SocketAddr,
@@ -63,6 +63,6 @@ impl DefaultBgpPeer {
             remote_as_number,
             local_as_number,
             connection_mode,
-            name: String::from(&name) }
+            name: String::from(name) }
     }
 }
